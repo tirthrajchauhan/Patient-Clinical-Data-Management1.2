@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Patient } from './components/index/Patient';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,11 @@ export class PatientService {
 
     };
     this.http.post(`${this.uri}/add`, obj)
-        .subscribe(res => console.log('Done'));
-  }
+    .subscribe(res => console.log('Done'));
+}
+  getPatients() {
+    return this
+           .http
+           .get(`${this.uri}`);
+    }
 }
