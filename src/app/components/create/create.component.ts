@@ -26,10 +26,14 @@ export class CreateComponent implements OnInit {
   }
 
   addPatient(first_name, last_name,dob,address) {
+<<<<<<< HEAD
     this.patientService.addPatient(first_name, last_name,dob,address);
     this.router.navigate(['/index']);
     window.location.reload();
   
+=======
+    this.patientService.addPatient(first_name, last_name,dob,address)
+>>>>>>> 69f9ce38fae703f122a0de5d417b494acd1c6a6c
 }
   ngOnInit() {
   }
