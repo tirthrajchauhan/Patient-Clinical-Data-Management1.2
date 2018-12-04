@@ -1,3 +1,47 @@
-<p>
-  edit works!
-</p>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="angForm" novalidate>
+            <div class="form-group">
+          <label class="col-md-4">First Name</label>
+          <input type="text" class="form-control" name="first_name" formControlName="first_name" #first_name [(ngModel)] = "patient.first_name" />
+        </div>
+        <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['first_name'].errors.required">
+            first_name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Last Name</label>
+          <input type="text" class="form-control" name="last_name" formControlName="last_name" #last_name [(ngModel)] = "patient.last_name"/>
+        </div>
+        <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['last_name'].errors.required">
+                last_name is required.
+            </div>
+          </div>
+        <div class="form-group">
+          <label class="col-md-4">Date Of Birth</label>
+          <input type="text" class="form-control" name="dob" formControlName="dob" #dob [(ngModel)] = "patient.dob"/>
+        </div>
+        <div *ngIf="angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['dob'].errors.required">
+                dob is required.
+            </div>
+          </div>
+        <div class="form-group">
+          <label class="col-md-4">Address</label>
+          <input type="text" class="form-control" name="address" formControlName="address" #address [(ngModel)] = "patient.address"/>
+        </div>
+        <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['address'].errors.required">
+                address is required.
+            </div>
+          </div>
+          <div class="form-group">
+              <button (click)="updatePatient(first_name.value, last_name.value,dob.value,address.value)" [disabled]="angForm.invalid" class="btn btn-primary">Update Patient</button>
+            </div>
+
+      </form>
+    </div>
+  </div>

@@ -20,5 +20,11 @@ export class IndexComponent implements OnInit {
       this.patients = data;
     });
   }
+  
+deletePatient(id) {
+  this.patientService.deletePatient(id).subscribe(res => {
+    console.log('Deleted');
+  });
+}
 
 }
