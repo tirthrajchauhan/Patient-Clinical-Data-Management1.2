@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from './Patient';
 import { PatientService } from '../../patient.service';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-index',
@@ -10,8 +13,8 @@ import { PatientService } from '../../patient.service';
 export class IndexComponent implements OnInit {
 
   patients: Patient[];
-
-  constructor(private patientService: PatientService) { }
+  id: string;
+  constructor(private patientService: PatientService, private router: Router,public authService: AuthService) { }
 
   ngOnInit() {
     this.patientService
@@ -19,6 +22,15 @@ export class IndexComponent implements OnInit {
       .subscribe((data: Patient[]) => {
       this.patients = data;
     });
+
+    this.id = localStorage.getItem('token');
+  }
+
+  
+  logout(): void {
+    console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
   
 deletePatient(id) {
@@ -26,5 +38,6 @@ deletePatient(id) {
     console.log('Deleted');
   });
 }
+
 
 }

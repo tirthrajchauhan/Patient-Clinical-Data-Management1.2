@@ -10,7 +10,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientService } from './patient.service';
-import { ReactiveFormsModule } from '@angular/forms';
+//import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,16 +23,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: 'create',
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit/:id',
-    component: EditComponent
+    component: EditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'index',
-    component: IndexComponent
-  }
+    component: IndexComponent,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'login', component: LoginComponent },
+
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+
 ];
 
 
@@ -36,7 +49,9 @@ const routes: Routes = [
     AppComponent,
     CreateComponent,
     IndexComponent,
-    EditComponent
+    EditComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +60,10 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [PatientService],
+  providers: [PatientService,AuthGuard],
+
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
 
