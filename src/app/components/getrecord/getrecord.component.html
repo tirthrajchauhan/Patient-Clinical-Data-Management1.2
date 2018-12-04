@@ -1,0 +1,28 @@
+<p>
+  Patient Record
+</p>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+      <td>Blood Pressure</td>
+      <td>Respiratory Rate</td>
+      <td>Blood Oxygen Level</td>
+      <td>Heart Beat Rate</td>
+  </tr>
+  </thead>
+
+  <tbody id="body_color">
+      <tr>
+          <td>Demo</td>
+          <td>Demo</td>
+          <td>Demo</td>
+          <td>Demo</td>
+      </tr>
+
+      <tr class="buttons">
+          <td><a [routerLink]="['/editrecord']" class="btn btn-primary">Edit</a></td>
+          <td><button class="btn btn-danger">Delete</button></td>
+      </tr>
+  </tbody>
+</table>
