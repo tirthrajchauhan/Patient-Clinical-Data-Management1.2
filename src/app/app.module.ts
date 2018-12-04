@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CreateComponent } from './components/create/create.component';
 import { IndexComponent } from './components/index/index.component';
 import { EditComponent } from './components/edit/edit.component';
+import { AddrecordComponent } from './components/addrecord/addrecord.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GetrecordComponent } from './components/getrecord/getrecord.component';
+import { EditrecordComponent } from './components/editrecord/editrecord.component';
 
 
 
@@ -39,8 +42,20 @@ const routes: Routes = [
   { 
     path: 'login', component: LoginComponent },
 
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
+  {
+    path: 'addrecord',
+    component: AddrecordComponent
+  },
+  {
+    path: 'getrecord',
+    component: GetrecordComponent
+  },
+  {
+    path: 'editrecord',
+    component: EditrecordComponent
+  }
 ];
 
 
@@ -51,7 +66,10 @@ const routes: Routes = [
     IndexComponent,
     EditComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddrecordComponent,
+    GetrecordComponent,
+    EditrecordComponent
   ],
   imports: [
     BrowserModule,

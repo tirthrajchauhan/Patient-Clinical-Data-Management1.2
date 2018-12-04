@@ -1,0 +1,38 @@
+.nav-link{
+    color: black;
+  }
+
+.buttons{ 
+    display: flex;
+    justify-content: last baseline;
+}
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    padding-top: 40px;
+    font-style: oblique;
+    padding-bottom: 10px;
+}
+
+.CellWithComment{
+    position:relative;
+  }
+  
+.CellComment{
+    display:none;
+    position:absolute; 
+    z-index:100;
+    border:1px;
+    background-color:white;
+   /* border-style:solid;
+    border-width:1px;
+    border-color: blue;*/
+    padding:3px;
+    color: blue; 
+    top:40px; 
+    left:120px;
+  }
+  
+  .CellWithComment:hover span.CellComment{
+    display:block;
+  }

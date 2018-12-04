@@ -1,3 +1,6 @@
+<p>
+  Add New Patient!
+</p>
 <div class="card">
   <div class="card-body">
       <div class="col-md-6 col-md-offset-3 loginBox">
@@ -11,7 +14,7 @@
       </div>
       <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['first_name'].errors.required">
-          first_name is required.
+          First name is required.
         </div>
       </div>
       <div class="form-group">
@@ -20,7 +23,7 @@
       </div>
       <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['last_name'].errors.required">
-              last_name is required.
+          Last name is required.
           </div>
         </div>
       <div class="form-group">
@@ -29,7 +32,7 @@
       </div>
       <div *ngIf="angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['dob'].errors.required">
-              dob is required.
+            Date of birth is required.
           </div>
         </div>
       <div class="form-group">
@@ -38,7 +41,7 @@
       </div>
       <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['address'].errors.required">
-              address is required.
+            Address is required.
           </div>
         </div>
         <div class="form-group">
