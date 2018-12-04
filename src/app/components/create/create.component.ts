@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { PatientService } from '../../patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -10,8 +11,9 @@ import { PatientService } from '../../patient.service';
 export class CreateComponent implements OnInit {
   angForm: FormGroup;
 
-  constructor(private patientService: PatientService, private fb: FormBuilder) { 
+  constructor(private patientService: PatientService, private fb: FormBuilder, private router: Router) { 
     this.createForm();
+    
   }
 
   createForm() {
@@ -25,6 +27,9 @@ export class CreateComponent implements OnInit {
 
   addPatient(first_name, last_name,dob,address) {
     this.patientService.addPatient(first_name, last_name,dob,address);
+    this.router.navigate(['/index']);
+    window.location.reload();
+  
 }
   ngOnInit() {
   }

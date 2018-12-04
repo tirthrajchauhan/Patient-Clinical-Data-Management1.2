@@ -10,7 +10,7 @@ const express = require('express'),
 
 
     mongoose.Promise = global.Promise;
-    mongoose.connect("mongodb://tac:tac123580@ds047335.mlab.com:47335/clinic-data").then(
+    mongoose.connect(config.DB).then(
       () => {console.log('Database is connected') },
       err => { console.log('Can not connect to the database'+ err)}
     );

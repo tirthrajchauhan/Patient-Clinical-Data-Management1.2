@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
       .getPatients()
       .subscribe((data: Patient[]) => {
       this.patients = data;
+      
     });
 
     this.id = localStorage.getItem('token');
@@ -37,6 +38,7 @@ deletePatient(id) {
   this.patientService.deletePatient(id).subscribe(res => {
     console.log('Deleted');
   });
+  window.location.reload();
 }
 
 

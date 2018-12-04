@@ -36,7 +36,9 @@ updatePatient(first_name, last_name,dob,address) {
   this.route.params.subscribe(params => {
      this.patientService.updatePatient(first_name, last_name,dob,address, params['id']);
      this.router.navigate(['index']);
+     
   });
+  window.location.reload();
 }
     ngOnInit() {
       this.route.params.subscribe(params => {
