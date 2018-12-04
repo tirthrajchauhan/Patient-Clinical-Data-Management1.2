@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
   }
 
   addPatient(first_name, last_name,dob,address) {
-    this.patientService.addPatient(first_name, last_name,dob,address);
+    this.patientService.addPatient(first_name, last_name,dob,address)
 }
   ngOnInit() {
   }

@@ -18,6 +18,7 @@ export class AppComponent {
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
     });
+    
   }
   private navigationInterceptor(event: Event): void {
     if (event instanceof NavigationStart) {
@@ -33,7 +34,4 @@ export class AppComponent {
       this._loadingBar.stop();
     }
   }
-
-
- 
 }

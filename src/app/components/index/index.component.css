@@ -6,7 +6,7 @@
     display: flex;
     justify-content: last baseline;
 }
-p{
+p, .loginBox{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18px;
     padding-top: 40px;
@@ -36,3 +36,9 @@ p{
   .CellWithComment:hover span.CellComment{
     display:block;
   }
+
+@media only screen and (max-width: 600px) {
+    .hide {
+       display: none;
+    }
+}
