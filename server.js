@@ -7,7 +7,7 @@ const express = require('express'),
 
     const PatientRoute = require('./routes/PatientRoute');
   
-
+    //const port = process.env.PORT || 4000;
 
     mongoose.Promise = global.Promise;
     mongoose.connect("mongodb://tac:tac123580@ds047335.mlab.com:47335/clinic-data").then(
@@ -18,11 +18,14 @@ const express = require('express'),
     const app = express();
     app.use(bodyParser.json());
     app.use(cors());
-    const port = process.env.PORT || 4000;
+  
 
     app.use('/patient', PatientRoute);
 
-    const server = app.listen(port, function(){
-     console.log('Listening on port ' + port);
-    });
+    // const server = app.listen(port, function(){
+    //  console.log('Listening on port ' + port);
+    // });
 
+    app.listen(process.env.PORT || 4000, function(){
+      console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+    });
