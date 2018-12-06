@@ -7,7 +7,7 @@ import { Patient } from './components/index/Patient';
   providedIn: 'root'
 })
 export class PatientService {
-  uri = 'http://localhost:4000/patient';
+  uri = '/patient';
 
  
   constructor(private http: HttpClient) { }
