@@ -662,7 +662,7 @@ module.exports = ".nav-link{\n    color: black;\n  }\n\n.buttons{ \n    display:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loginBox\">\n        Welcome,  {{id}}\n        <a href=\"javascript:void(0);\" (click)=\"logout()\">Logout</a>\n    </div>\n<p>\n    Patient Details\n</p>\n<div class=\"card\">\n        <div class=\"card-body\">\n            <form [formGroup]=\"angForm\" novalidate>\n                <table class=\"table table-hover\">\n                            <thead>\n                                    <tr>\n                                        <td>First Name</td>\n                                        <td class=\"hide\">Last Name</td>\n                                        <td class=\"hide\">DOB</td>\n                                        <td class=\"hide\">Address</td>\n                                        <td colspan=\"2\">Actions</td>\n                                    </tr>\n                            </thead>\n                            <tbody id=\"body_color\">\n                                    <tr *ngFor=\"let patient of patients\">\n                                        <td class=\"CellWithComment\"><a [routerLink]=\"['/getrecord']\" class=\"nav-link\">{{ patient.first_name }}<span class=\"CellComment\">Click to fetch records!</span></a>\n                                        </td>\n                                        <td class=\"hide\">{{ patient.last_name }}</td>\n                                        <td class=\"hide\">{{ patient.dob }}</td>\n                                        <td class=\"hide\">{{ patient.address }}</td>\n                                        <td class=\"buttons\"><a [routerLink]=\"['/edit', patient._id]\" class=\"btn btn-primary\">Edit</a>\n                                        <button (click)=\"deletePatient(patient._id)\"  class=\"btn btn-danger\">Delete</button></td>\n                                    </tr>\n                            </tbody>\n                </table> \n          </form>\n        </div>\n      </div>"
+module.exports = "<div class=\"loginBox\">\n        Welcome,  {{id}}\n        <a href=\"javascript:void(0);\" (click)=\"logout()\">Logout</a>\n    </div>\n<p>\n    Patient Details\n</p>\n<div class=\"card\">\n        <div class=\"card-body\">\n            <form [formGroup]=\"addPatient\" novalidate>\n                <table class=\"table table-hover\">\n                            <thead>\n                                    <tr>\n                                        <td>First Name</td>\n                                        <td class=\"hide\">Last Name</td>\n                                        <td class=\"hide\">DOB</td>\n                                        <td class=\"hide\">Address</td>\n                                        <td colspan=\"2\">Actions</td>\n                                    </tr>\n                            </thead>\n                            <tbody id=\"body_color\">\n                                    <tr *ngFor=\"let patient of patients\">\n                                        <td class=\"CellWithComment\"><a [routerLink]=\"['/getrecord']\" class=\"nav-link\">{{ patient.first_name }}<span class=\"CellComment\">Click to fetch records!</span></a>\n                                        </td>\n                                        <td class=\"hide\">{{ patient.last_name }}</td>\n                                        <td class=\"hide\">{{ patient.dob }}</td>\n                                        <td class=\"hide\">{{ patient.address }}</td>\n                                        <td class=\"buttons\"><a [routerLink]=\"['/edit', patient._id]\" class=\"btn btn-primary\">Edit</a>\n                                        <button (click)=\"deletePatient(patient._id)\"  class=\"btn btn-danger\">Delete</button></td>\n                                    </tr>\n                            </tbody>\n                </table> \n          </form>\n        </div>\n      </div>"
 
 /***/ }),
 
@@ -681,19 +681,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patient_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../patient.service */ "./src/app/patient.service.ts");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
 
 
 var IndexComponent = /** @class */ (function () {
-    function IndexComponent(patientService, router, authService) {
+    function IndexComponent(patientService, router, authService, fb) {
         this.patientService = patientService;
         this.router = router;
         this.authService = authService;
+        this.fb = fb;
     }
     IndexComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.addPatient = this.fb.group({
+            first_name: [''],
+            last_name: [''],
+            DOB: [''],
+            address: [''],
+        });
         this.patientService
             .getPatients()
             .subscribe(function (data) {
@@ -718,7 +727,7 @@ var IndexComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./index.component.html */ "./src/app/components/index/index.component.html"),
             styles: [__webpack_require__(/*! ./index.component.css */ "./src/app/components/index/index.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_patient_service__WEBPACK_IMPORTED_MODULE_2__["PatientService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_patient_service__WEBPACK_IMPORTED_MODULE_2__["PatientService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]])
     ], IndexComponent);
     return IndexComponent;
 }());

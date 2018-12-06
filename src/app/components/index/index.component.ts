@@ -3,6 +3,7 @@ import { Patient } from './Patient';
 import { PatientService } from '../../patient.service';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import { FormGroup,FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -14,9 +15,19 @@ export class IndexComponent implements OnInit {
 
   patients: Patient[];
   id: string;
-  constructor(private patientService: PatientService, private router: Router,public authService: AuthService) { }
+  addPatient:FormGroup; 
+  constructor(private patientService: PatientService, private router: Router,public authService: AuthService,    private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.addPatient = this.fb.group({
+      first_name: [''],
+      last_name: [''],
+      DOB: [''],
+      address: [''],
+    });
+
+
+
     this.patientService
       .getPatients()
       .subscribe((data: Patient[]) => {
