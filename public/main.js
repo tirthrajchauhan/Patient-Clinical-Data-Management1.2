@@ -919,7 +919,7 @@ __webpack_require__.r(__webpack_exports__);
 var PatientService = /** @class */ (function () {
     function PatientService(http) {
         this.http = http;
-        this.uri = 'http://localhost:4000/patient';
+        this.uri = '/patient';
     }
     PatientService.prototype.addPatient = function (first_name, last_name, dob, address) {
         var obj = {
