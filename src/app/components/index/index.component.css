@@ -5,6 +5,7 @@
 .buttons{ 
     display: flex;
     justify-content: last baseline;
+    font-family: white;
 }
 p, .loginBox{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

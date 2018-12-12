@@ -22,6 +22,7 @@
                                     <tr *ngFor="let patient of patients">
                                         <!-- <td class="CellWithComment"><a [routerLink]="['/getrecord', patient._id]" class="nav-link">{{ patient.first_name }}<span class="CellComment">Click to fetch records!</span></a>
                                         </td> -->
+                                        <td>{{ patient.first_name }}</td>
                                         <td class="hide">{{ patient.last_name }}</td>
                                         <td class="hide">{{ patient.dob }}</td>
                                         <td class="hide">{{ patient.address }}</td>
