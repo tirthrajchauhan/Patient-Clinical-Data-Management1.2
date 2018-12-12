@@ -66,4 +66,16 @@ PatientRoute.route('/delete/:id').get(function (req, res) {
     });
 });
 
+
+PatientRoute.route('/:id').get(function (req, res){
+  Patient.findOne({_id: req.params.id}, function (err, patient){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(patient);
+    }
+  })
+});
+
 module.exports = PatientRoute;

@@ -41,7 +41,7 @@ module.exports = "h1 {\n    color: #369;\n    font-family: Verdana, Geneva, Taho
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng2-slim-loading-bar color=\"blue\"></ng2-slim-loading-bar>\n<nav class=\"navbar navbar-expand-sm bg-dark\"  >\n  <a class=\"navbar-brand\" id=\"title\">Health Care</a>\n  <div class=\"container-fluid\">\n    <ul class=\"navbar-nav\" >\n      <li class=\"nav-item\">\n        <a routerLink=\"create\" class=\"nav-link\" routerLinkActive=\"active\">\n          Add Patient\n        </a>\n      </li>\n      <li class=\"nav-item\">\n        <a routerLink=\"index\" class=\"nav-link\" routerLinkActive=\"active\">\n          List Patients\n        </a>\n      </li> \n      <li class=\"nav-item\">\n        <a routerLink=\"login\" class=\"nav-link\" routerLinkActive=\"active\">\n         Login\n        </a>\n      </li> \n\n      <li class=\"nav-item\">\n          <a href=\"javascript:void(0);\" class=\"nav-link log\" (click)=\"logout()\">Logout</a>\n        </li> \n        <!-- <li routerLinkActive=\"active\" class=\"nav-link\"  >  <a routerLink=\"/login\">Login</a></li>\n              <li routerLinkActive=\"active\"  class=\"nav-link\"  ><a routerLink=\"/dashboard\">Dashboard</a></li> -->\n    </ul>\n  </div>\n</nav>\n\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n\n<footer class=\"footer\">\n  <div class=\"container\">\n    <span class=\"text-muted\">Copyright © 2018 Centennial College</span>\n  </div>\n</footer>\n\n\n \n <!-- <div class=\"container\"> -->\n\n    <!-- Static navbar -->\n    <!-- <nav class=\"navbar navbar-inverse\">\n        <div class=\"container-fluid\">\n          <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n              <span class=\"sr-only\">Toggle navigation</span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n            </button>\n          </div>\n          <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <li routerLinkActive=\"active\"><a routerLink=\"/login\">Login</a></li>\n              <li routerLinkActive=\"active\"><a routerLink=\"/dashboard\">Dashboard</a></li>\n            </ul>\n          </div><!-- /.nav-collapse -->\n        <!-- </div><!-- /.container-fluid -->\n      <!-- </nav>\n  \n  <router-outlet></router-outlet>\n  </div> --> "
+module.exports = "<ng2-slim-loading-bar color=\"blue\"></ng2-slim-loading-bar>\n<nav class=\"navbar navbar-expand-sm bg-dark\"  >\n  <a class=\"navbar-brand\" id=\"title\">Health Care</a>\n  <div class=\"container-fluid\">\n    <ul class=\"navbar-nav\" >\n      <li class=\"nav-item\">\n        <a routerLink=\"create\" class=\"nav-link\" routerLinkActive=\"active\">\n          {{'H2' | translate}}\n        </a>\n      </li>\n      <li class=\"nav-item\">\n        <a routerLink=\"index\" class=\"nav-link\" routerLinkActive=\"active\">\n          {{'H1' | translate}}\n        </a>\n      </li> \n      <li class=\"nav-item\">\n        <a routerLink=\"login\" class=\"nav-link\" routerLinkActive=\"active\">\n         Login\n        </a>\n      </li> \n\n        <!-- <li routerLinkActive=\"active\" class=\"nav-link\"  >  <a routerLink=\"/login\">Login</a></li>\n              <li routerLinkActive=\"active\"  class=\"nav-link\"  ><a routerLink=\"/dashboard\">Dashboard</a></li> -->\n    </ul>\n  </div>\n</nav>\n<h1 translate>Title</h1>\n\n<button (click)=\"switchLanguage('en')\">en</button>\n\n<button (click)=\"switchLanguage('fr')\">fr</button>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n\n\n\n\n \n <!-- <div class=\"container\"> -->\n\n    <!-- Static navbar -->\n    <!-- <nav class=\"navbar navbar-inverse\">\n        <div class=\"container-fluid\">\n          <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n              <span class=\"sr-only\">Toggle navigation</span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n            </button>\n          </div>\n          <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <li routerLinkActive=\"active\"><a routerLink=\"/login\">Login</a></li>\n              <li routerLinkActive=\"active\"><a routerLink=\"/dashboard\">Dashboard</a></li>\n            </ul>\n          </div><!-- /.nav-collapse -->\n        <!-- </div><!-- /.container-fluid -->\n      <!-- </nav>\n  \n  <router-outlet></router-outlet>\n  </div> --> "
 
 /***/ }),
 
@@ -59,20 +59,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ng2_slim_loading_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng2-slim-loading-bar */ "./node_modules/ng2-slim-loading-bar/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_loadingBar, _router) {
+    function AppComponent(translate, _loadingBar, _router) {
         var _this = this;
+        this.translate = translate;
         this._loadingBar = _loadingBar;
         this._router = _router;
         this.title = 'app';
         this._router.events.subscribe(function (event) {
             _this.navigationInterceptor(event);
+            translate.setDefaultLang('en');
         });
     }
+    AppComponent.prototype.switchLanguage = function (language) {
+        this.translate.use(language);
+    };
     AppComponent.prototype.navigationInterceptor = function (event) {
         if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationStart"]) {
             this._loadingBar.start();
@@ -93,7 +100,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ng2_slim_loading_bar__WEBPACK_IMPORTED_MODULE_2__["SlimLoadingBarService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateService"], ng2_slim_loading_bar__WEBPACK_IMPORTED_MODULE_2__["SlimLoadingBarService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -106,11 +113,12 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: AppModule */
+/*! exports provided: HttpLoaderFactory, AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLoaderFactory", function() { return HttpLoaderFactory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
@@ -130,6 +138,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _components_getrecord_getrecord_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/getrecord/getrecord.component */ "./src/app/components/getrecord/getrecord.component.ts");
 /* harmony import */ var _components_editrecord_editrecord_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/editrecord/editrecord.component */ "./src/app/components/editrecord/editrecord.component.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/fesm5/ngx-translate-http-loader.js");
 
 
 
@@ -149,6 +159,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+function HttpLoaderFactory(http) {
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_19__["TranslateHttpLoader"](http);
+}
 var routes = [
     {
         path: 'create',
@@ -200,6 +215,14 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
+                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_18__["TranslateModule"].forRoot({
+                    loader: {
+                        provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_18__["TranslateLoader"],
+                        useFactory: HttpLoaderFactory,
+                        deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClient"]]
+                    }
+                }),
                 _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"].forRoot(routes),
                 ng2_slim_loading_bar__WEBPACK_IMPORTED_MODULE_9__["SlimLoadingBarModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
@@ -322,7 +345,7 @@ module.exports = "p{\n    font-family: Verdana, Geneva, Tahoma, sans-serif;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Add Record!\n</p>\n<div class=\"card\">\n  <div class=\"card-body\">\n      <form [formGroup]=\"angForm\" novalidate>\n          <div class=\"form-group\">\n        <label class=\"col-md-4\">Blood Pressure</label>\n        <input type=\"text\" class=\"form-control\" name=\"blood_pressure\" formControlName=\"blood_pressure\" #first_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['blood_pressure'].invalid && (angForm.controls['blood_pressure'].dirty || angForm.controls['blood_pressure'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['blood_pressure'].errors.required\">\n          Please insert blood pressure.\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Respiratory Rate</label>\n        <input type=\"text\" class=\"form-control\" name=\"respi_rate\" formControlName=\"respi_rate\" #last_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['respi_rate'].invalid && (angForm.controls['respi_rate'].dirty || angForm.controls['respi_rate'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['respi_rate'].errors.required\">\n          Please insert respiratory rate.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Blood Oxygen Level</label>\n        <input type=\"text\" class=\"form-control\" name=\"bo_level\" formControlName=\"bo_level\" #dob/>\n      </div>\n      <div *ngIf=\"angForm.controls['bo_level'].invalid && (angForm.controls['bo_level'].dirty || angForm.controls['bo_level'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['bo_level'].errors.required\">\n            Please insert blood oxygen level.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Heart-Beat Rate</label>\n        <input type=\"text\" class=\"form-control\" name=\"hb_rate\" formControlName=\"hb_rate\" #address/>\n      </div>\n      <div *ngIf=\"angForm.controls['hb_rate'].invalid && (angForm.controls['hb_rate'].dirty || angForm.controls['hb_rate'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['hb_rate'].errors.required\">\n            Please insert heart-beat rate.\n          </div>\n        </div>\n        <div class=\"form-group\">\n            <button (click)=\"angForm.invalid\" class=\"btn btn-primary\">Add Patient</button>\n          </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<p>\n  Add Record!\n</p>\n<div class=\"card\">\n  <div class=\"card-body\">\n      <form [formGroup]=\"angForm\" novalidate>\n          <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H13' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"blood_pressure\" formControlName=\"blood_pressure\" [(ngModel)]=\"blood_pressure\"/>\n      </div>\n      \n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H14' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"respiratory_rate\" formControlName=\"respiratory_rate\" [(ngModel)]=\"respiratory_rate\"/>\n      </div>\n     \n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H15' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"blood_oxygen\" formControlName=\"blood_oxygen\" [(ngModel)]=\"blood_oxygen\"/>\n      </div>\n      \n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H16' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"heart_rate\" formControlName=\"heart_rate\" [(ngModel)]=\"heart_rate\"/>\n      </div>\n     \n        <div class=\"form-group\">\n            <button type=\"submit\" (click)=\"onRecordSubmit()\" [disabled]=\"angForm.invalid\" class=\"btn btn-primary\">Add Records</button>\n          </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -338,12 +361,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddrecordComponent", function() { return AddrecordComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _record_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../record.service */ "./src/app/record.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
 
 
 var AddrecordComponent = /** @class */ (function () {
-    function AddrecordComponent() {
+    function AddrecordComponent(route, recordService, fb, router) {
+        this.route = route;
+        this.recordService = recordService;
+        this.fb = fb;
+        this.router = router;
+        this.patient = {};
+        this.createForm();
     }
+    AddrecordComponent.prototype.createForm = function () {
+        this.angForm = this.fb.group({
+            blood_pressure: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            respiratory_rate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            blood_oxygen: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            heart_rate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+    };
+    AddrecordComponent.prototype.onRecordSubmit = function () {
+        var _this = this;
+        var newRecord = {
+            patient_id: this.id,
+            blood_pressure: this.blood_pressure,
+            respiratory_rate: this.respiratory_rate,
+            blood_oxygen: this.blood_oxygen,
+            heart_rate: this.heart_rate
+        };
+        this.recordService.addRecord(this.id, newRecord).subscribe(function (record) {
+            _this.records = record;
+            _this.router.navigate(['/getrecord']);
+        });
+    };
+    //   addRecord(blood_pressure, respiratory_rate, blood_oxygen, heartbeat_rate) {
+    //     this.route.params.subscribe(params => {
+    //     this.recordService.addRecord(blood_pressure, respiratory_rate, blood_oxygen,heartbeat_rate, params['id']);
+    //     //this.router.navigate(['/getrecord']);
+    //     //window.location.reload();
+    //     });
+    // }
     AddrecordComponent.prototype.ngOnInit = function () {
+        this.id = JSON.parse(localStorage.getItem("id"));
     };
     AddrecordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -351,7 +416,7 @@ var AddrecordComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./addrecord.component.html */ "./src/app/components/addrecord/addrecord.component.html"),
             styles: [__webpack_require__(/*! ./addrecord.component.css */ "./src/app/components/addrecord/addrecord.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _record_service__WEBPACK_IMPORTED_MODULE_3__["RecordService"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], AddrecordComponent);
     return AddrecordComponent;
 }());
@@ -378,7 +443,7 @@ module.exports = "p{\n    font-family: Verdana, Geneva, Tahoma, sans-serif;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Add New Patient!\n</p>\n<div class=\"card\">\n  <div class=\"card-body\">\n      \n      <form [formGroup]=\"angForm\" novalidate>\n          <div class=\"form-group\">\n        <label class=\"col-md-4\">First Name</label>\n        <input type=\"text\" class=\"form-control\" name=\"first_name\" formControlName=\"first_name\" #first_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n          First name is required.\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Last Name</label>\n        <input type=\"text\" class=\"form-control\" name=\"last_name\" formControlName=\"last_name\" #last_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n          Last name is required.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Date Of Birth</label>\n        <input type=\"text\" class=\"form-control\" name=\"dob\" formControlName=\"dob\" #dob/>\n      </div>\n      <div *ngIf=\"angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['dob'].errors.required\">\n            Date of birth is required.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Address</label>\n        <input type=\"text\" class=\"form-control\" name=\"address\" formControlName=\"address\" #address/>\n      </div>\n      <div *ngIf=\"angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['address'].errors.required\">\n            Address is required.\n          </div>\n        </div>\n        <div class=\"form-group\">\n            <button (click)=\"addPatient(first_name.value, last_name.value,dob.value,address.value)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Add Patient</button>\n          </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<p>\n  {{'H3' | translate}}\n</p>\n<div class=\"card\">\n  <div class=\"card-body\">\n      \n      <form [formGroup]=\"angForm\" novalidate>\n          <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H4' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"first_name\" formControlName=\"first_name\" #first_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n          First name is required.\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H5' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"last_name\" formControlName=\"last_name\" #last_name/>\n      </div>\n      <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n          Last name is required.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H6' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"dob\" formControlName=\"dob\" #dob/>\n      </div>\n      <div *ngIf=\"angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['dob'].errors.required\">\n            Date of birth is required.\n          </div>\n        </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">{{'H7' | translate}}</label>\n        <input type=\"text\" class=\"form-control\" name=\"address\" formControlName=\"address\" #address/>\n      </div>\n      <div *ngIf=\"angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['address'].errors.required\">\n            Address is required.\n          </div>\n        </div>\n        <div class=\"form-group\">\n            <button (click)=\"addPatient(first_name.value, last_name.value,dob.value,address.value)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">{{'H2' | translate}}</button>\n          </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -457,7 +522,7 @@ module.exports = "p{\n    font-family: Verdana, Geneva, Tahoma, sans-serif;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Update Patient Details!\n</p>\n<div class=\"card\">\n    <div class=\"card-body\">\n        <form [formGroup]=\"angForm\" novalidate>\n            <div class=\"form-group\">\n          <label class=\"col-md-4\">First Name</label>\n          <input type=\"text\" class=\"form-control\" name=\"first_name\" formControlName=\"first_name\" #first_name [(ngModel)] = \"patient.first_name\" />\n        </div>\n        <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n            first_name is required.\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Last Name</label>\n          <input type=\"text\" class=\"form-control\" name=\"last_name\" formControlName=\"last_name\" #last_name [(ngModel)] = \"patient.last_name\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n                last_name is required.\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Date Of Birth</label>\n          <input type=\"text\" class=\"form-control\" name=\"dob\" formControlName=\"dob\" #dob [(ngModel)] = \"patient.dob\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['dob'].errors.required\">\n                dob is required.\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Address</label>\n          <input type=\"text\" class=\"form-control\" name=\"address\" formControlName=\"address\" #address [(ngModel)] = \"patient.address\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['address'].errors.required\">\n                address is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n              <button (click)=\"updatePatient(first_name.value, last_name.value,dob.value,address.value)\" [disabled]=\"angForm.invalid\" class=\"btn btn-primary\">Update Patient</button>\n            </div>\n\n      </form>\n    </div>\n  </div>"
+module.exports = "<p>\n  Update Patient Details!\n</p>\n<div class=\"card\">\n    <div class=\"card-body\">\n        <form [formGroup]=\"angForm\" novalidate>\n            <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H4' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"first_name\" formControlName=\"first_name\" #first_name [(ngModel)] = \"patient.first_name\" />\n        </div>\n        <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n            first_name is required.\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H5' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"last_name\" formControlName=\"last_name\" #last_name [(ngModel)] = \"patient.last_name\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n                last_name is required.\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H6' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"dob\" formControlName=\"dob\" #dob [(ngModel)] = \"patient.dob\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['dob'].errors.required\">\n                dob is required.\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H7' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"address\" formControlName=\"address\" #address [(ngModel)] = \"patient.address\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['address'].errors.required\">\n                address is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n              <button (click)=\"updatePatient(first_name.value, last_name.value,dob.value,address.value)\" [disabled]=\"angForm.invalid\" class=\"btn btn-primary\">{{'H17' | translate}}</button>\n            </div>\n\n      </form>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -550,7 +615,7 @@ module.exports = "p{\n    font-family: Verdana, Geneva, Tahoma, sans-serif;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Update Patient Record!\n</p>\n<div class=\"card\">\n    <div class=\"card-body\">\n        <form [formGroup]=\"angForm\" novalidate>\n            <div class=\"form-group\">\n          <label class=\"col-md-4\">Blood Pressure</label>\n          <input type=\"text\" class=\"form-control\" name=\"blood_pressure\" formControlName=\"blood_pressure\" #first_name [(ngModel)] = \"patient.blood_pressure\" />\n        </div>\n        <div *ngIf=\"angForm.controls['blood_pressure'].invalid && (angForm.controls['blood_pressure'].dirty || angForm.controls['blood_pressure'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['blood_pressure'].errors.required\">\n          Please insert blood pressure!\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Respiratory Rate</label>\n          <input type=\"text\" class=\"form-control\" name=\"respi_rate\" formControlName=\"respi_rate\" #last_name [(ngModel)] = \"patient.respi_rate\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['respi_rate'].invalid && (angForm.controls['respi_rate'].dirty || angForm.controls['respi_rate'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['respi_rate'].errors.required\">\n              Please insert respiratory rate!\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Blood Oxygen Level</label>\n          <input type=\"text\" class=\"form-control\" name=\"bo_level\" formControlName=\"bo_level\" #bo_level [(ngModel)] = \"patient.bo_level\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['bo_level'].invalid && (angForm.controls['bo_level'].dirty || angForm.controls['bo_level'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['bo_level'].errors.required\">\n               Please insert blood oxygen level!\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">Heart-Beat Rate</label>\n          <input type=\"text\" class=\"form-control\" name=\"hb_rate\" formControlName=\"hb_rate\" #address [(ngModel)] = \"patient.hb_rate\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['hb_rate'].invalid && (angForm.controls['hb_rate'].dirty || angForm.controls['hb_rate'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['hb_rate'].errors.required\">\n                address is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n              <button [disabled]=\"angForm.invalid\" class=\"btn btn-primary\">Update Record</button>\n            </div>\n\n      </form>\n    </div>\n  </div>\n"
+module.exports = "<p>\n  Update Patient Record!\n</p>\n<div class=\"card\">\n    <div class=\"card-body\">\n        <form [formGroup]=\"angForm\" novalidate>\n            <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H13' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"blood_pressure\" formControlName=\"blood_pressure\" #first_name [(ngModel)] = \"patient.blood_pressure\" />\n        </div>\n        <div *ngIf=\"angForm.controls['blood_pressure'].invalid && (angForm.controls['blood_pressure'].dirty || angForm.controls['blood_pressure'].touched)\" class=\"alert alert-danger\">\n          <div *ngIf=\"angForm.controls['blood_pressure'].errors.required\">\n          Please insert blood pressure!\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H14' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"respi_rate\" formControlName=\"respi_rate\" #last_name [(ngModel)] = \"patient.respi_rate\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['respi_rate'].invalid && (angForm.controls['respi_rate'].dirty || angForm.controls['respi_rate'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['respi_rate'].errors.required\">\n              Please insert respiratory rate!\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H15' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"bo_level\" formControlName=\"bo_level\" #bo_level [(ngModel)] = \"patient.bo_level\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['bo_level'].invalid && (angForm.controls['bo_level'].dirty || angForm.controls['bo_level'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['bo_level'].errors.required\">\n               Please insert blood oxygen level!\n            </div>\n          </div>\n        <div class=\"form-group\">\n          <label class=\"col-md-4\">{{'H16' | translate}}</label>\n          <input type=\"text\" class=\"form-control\" name=\"hb_rate\" formControlName=\"hb_rate\" #address [(ngModel)] = \"patient.hb_rate\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['hb_rate'].invalid && (angForm.controls['hb_rate'].dirty || angForm.controls['hb_rate'].touched)\" class=\"alert alert-danger\">\n            <div *ngIf=\"angForm.controls['hb_rate'].errors.required\">\n                address is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n              <button [disabled]=\"angForm.invalid\" class=\"btn btn-primary\">{{'H17' | translate}}</button>\n            </div>\n\n      </form>\n    </div>\n  </div>\n"
 
 /***/ }),
 
@@ -606,7 +671,7 @@ module.exports = ".buttons{ \n    text-align: center;\n}\np{\n    font-family: V
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Patient Record\n</p>\n\n<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      <td>Blood Pressure</td>\n      <td>Respiratory Rate</td>\n      <td>Blood Oxygen Level</td>\n      <td>Heart Beat Rate</td>\n  </tr>\n  </thead>\n\n  <tbody id=\"body_color\">\n      <tr>\n          <td>Demo</td>\n          <td>Demo</td>\n          <td>Demo</td>\n          <td>Demo</td>\n      </tr>\n  </tbody>\n</table>\n\n<table class=\"table table-hover\">\n<tr class=\"buttons\">\n    <td><a [routerLink]=\"['/editrecord']\" class=\"btn btn-primary\" id=\"buttons\">Edit</a></td>\n    <td><button class=\"btn btn-danger\" id=\"buttons\">Delete</button></td>\n    </tr>\n</table>"
+module.exports = "<p>\n  Patient Record\n</p>\n\n<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      <td>{{'H13' | translate}}/td>\n      <td>{{'H14' | translate}}</td>\n      <td>{{'H15' | translate}}</td>\n      <td>{{'H16' | translate}}</td>\n  </tr>\n  </thead>\n\n  <tbody id=\"body_color\">\n    <tr *ngFor=\"let record of records\">\n        <td class=\"CellWithComment\">{{ record.blood_pressure }}</td>\n        <td class=\"hide\">{{ record.respiratory_rate }}</td>\n        <td class=\"hide\">{{ record.blood_oxygen }}</td>\n        <td class=\"hide\">{{ record.heart_rate }}</td>\n        <td><button (click)=\"deleteRecord(id)\"  class=\"btn btn-danger\">Delete</button></td>\n    </tr>\n  </tbody>\n</table>\n\n<table class=\"table table-hover\">\n<tr class=\"buttons\">\n    <td><a (click)=\"redirect()\" class=\"btn btn-primary\" id=\"buttons\">Add</a></td>\n </tr>\n</table>"
 
 /***/ }),
 
@@ -622,12 +687,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetrecordComponent", function() { return GetrecordComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _record_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../record.service */ "./src/app/record.service.ts");
+/* harmony import */ var _patient_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../patient.service */ "./src/app/patient.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
 
 
 var GetrecordComponent = /** @class */ (function () {
-    function GetrecordComponent() {
+    function GetrecordComponent(patientService, recordService, router, fb) {
+        this.patientService = patientService;
+        this.recordService = recordService;
+        this.router = router;
+        this.fb = fb;
     }
+    GetrecordComponent.prototype.redirect = function () {
+        this.router.navigate(['/addrecord']);
+    };
     GetrecordComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.patientService.apiData$.subscribe(function (patient) {
+            //console.log(patient.id);
+            if (patient) {
+                _this.patient = patient;
+                _this.recordService.saveID(patient._id);
+                console.log(patient._id);
+            }
+        });
+        this.id = JSON.parse(localStorage.getItem("id"));
+        //console.log(this.patient.id);
+        this.recordService
+            .getRecords(this.id)
+            .subscribe(function (records) {
+            _this.records = records;
+        });
+    };
+    GetrecordComponent.prototype.deleteRecord = function (id) {
+        this.recordService.deleteRecord(id).subscribe(function (res) {
+            console.log('Deleted');
+        });
+        window.location.reload();
     };
     GetrecordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -635,7 +737,7 @@ var GetrecordComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./getrecord.component.html */ "./src/app/components/getrecord/getrecord.component.html"),
             styles: [__webpack_require__(/*! ./getrecord.component.css */ "./src/app/components/getrecord/getrecord.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_patient_service__WEBPACK_IMPORTED_MODULE_3__["PatientService"], _record_service__WEBPACK_IMPORTED_MODULE_2__["RecordService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]])
     ], GetrecordComponent);
     return GetrecordComponent;
 }());
@@ -662,7 +764,7 @@ module.exports = ".nav-link{\n    color: black;\n  }\n\n.buttons{ \n    display:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loginBox\">\n        Welcome,  {{id}}\n        <a href=\"javascript:void(0);\" (click)=\"logout()\">Logout</a>\n    </div>\n<p>\n    Patient Details\n</p>\n<div class=\"card\">\n        <div class=\"card-body\">\n            <form [formGroup]=\"addPatient\" novalidate>\n                <table class=\"table table-hover\">\n                            <thead>\n                                    <tr>\n                                        <td>First Name</td>\n                                        <td class=\"hide\">Last Name</td>\n                                        <td class=\"hide\">DOB</td>\n                                        <td class=\"hide\">Address</td>\n                                        <td colspan=\"2\">Actions</td>\n                                    </tr>\n                            </thead>\n                            <tbody id=\"body_color\">\n                                    <tr *ngFor=\"let patient of patients\">\n                                        <td class=\"CellWithComment\"><a [routerLink]=\"['/getrecord']\" class=\"nav-link\">{{ patient.first_name }}<span class=\"CellComment\">Click to fetch records!</span></a>\n                                        </td>\n                                        <td class=\"hide\">{{ patient.last_name }}</td>\n                                        <td class=\"hide\">{{ patient.dob }}</td>\n                                        <td class=\"hide\">{{ patient.address }}</td>\n                                        <td class=\"buttons\"><a [routerLink]=\"['/edit', patient._id]\" class=\"btn btn-primary\">Edit</a>\n                                        <button (click)=\"deletePatient(patient._id)\"  class=\"btn btn-danger\">Delete</button></td>\n                                    </tr>\n                            </tbody>\n                </table> \n          </form>\n        </div>\n      </div>"
+module.exports = "<div class=\"loginBox\">\n        Welcome,  {{id}}\n        <a href=\"javascript:void(0);\" (click)=\"logout()\">  {{'H22' | translate}}</a>\n    </div>\n<p>\n    {{'H18' | translate}}\n</p>\n<div class=\"card\">\n        <div class=\"card-body\">\n            <form [formGroup]=\"addPatient\" novalidate>\n                <table class=\"table table-hover\">\n                            <thead>\n                                    <tr>\n                                        <td>{{'H4' | translate}}</td>\n                                        <td class=\"hide\">{{'H5' | translate}}</td>\n                                        <td class=\"hide\">{{'H6' | translate}}</td>\n                                        <td class=\"hide\">{{'H7' | translate}}</td>\n                                        <td colspan=\"2\">{{'H8' | translate}}</td>\n                                    </tr>\n                            </thead>\n                            <tbody id=\"body_color\">\n                                    <tr *ngFor=\"let patient of patients\">\n                                        <!-- <td class=\"CellWithComment\"><a [routerLink]=\"['/getrecord', patient._id]\" class=\"nav-link\">{{ patient.first_name }}<span class=\"CellComment\">Click to fetch records!</span></a>\n                                        </td> -->\n                                        <td class=\"hide\">{{ patient.last_name }}</td>\n                                        <td class=\"hide\">{{ patient.dob }}</td>\n                                        <td class=\"hide\">{{ patient.address }}</td>\n                                        <td class=\"buttons\"><a (click)=\"singlePatient(patient._id)\" class=\"btn btn-primary\">Records</a>\n                                        <a [routerLink]=\"['/edit', patient._id]\" class=\"btn btn-primary\">{{'H9' | translate}}</a>\n                                        <button (click)=\"deletePatient(patient._id)\"  class=\"btn btn-danger\">{{'H10' | translate}}</button></td>\n                                    </tr>\n                            </tbody>\n                </table> \n          </form>\n        </div>\n      </div>"
 
 /***/ }),
 
@@ -720,6 +822,15 @@ var IndexComponent = /** @class */ (function () {
             console.log('Deleted');
         });
         window.location.reload();
+    };
+    IndexComponent.prototype.singlePatient = function (id) {
+        var _this = this;
+        this.patientService.getSinglePatient(id).subscribe(function (res) {
+            console.log(res);
+            _this.patients = res;
+            _this.patientService.setData(res);
+            _this.router.navigate(['/getrecord']);
+        });
     };
     IndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -913,6 +1024,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/BehaviorSubject */ "./node_modules/rxjs-compat/_esm5/BehaviorSubject.js");
+
 
 
 
@@ -920,6 +1033,8 @@ var PatientService = /** @class */ (function () {
     function PatientService(http) {
         this.http = http;
         this.uri = '/patient';
+        this.apiData = new rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+        this.apiData$ = this.apiData.asObservable();
     }
     PatientService.prototype.addPatient = function (first_name, last_name, dob, address) {
         var obj = {
@@ -935,6 +1050,12 @@ var PatientService = /** @class */ (function () {
         return this
             .http
             .get("" + this.uri);
+    };
+    PatientService.prototype.getSinglePatient = function (id) {
+        return this.http.get(this.uri + "/" + id);
+    };
+    PatientService.prototype.setData = function (data) {
+        this.apiData.next(data);
     };
     PatientService.prototype.editPatient = function (id) {
         return this
@@ -965,6 +1086,75 @@ var PatientService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], PatientService);
     return PatientService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/record.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/record.service.ts ***!
+  \***********************************/
+/*! exports provided: RecordService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecordService", function() { return RecordService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/BehaviorSubject */ "./node_modules/rxjs-compat/_esm5/BehaviorSubject.js");
+
+
+
+
+var RecordService = /** @class */ (function () {
+    function RecordService(http) {
+        this.http = http;
+        this.uri = '/record';
+        this.apiData = new rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+        this.apiData$ = this.apiData.asObservable();
+    }
+    RecordService.prototype.addRecord = function (id, newRecord) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json' });
+        return this.http.post(this.uri + "/" + id + "/add", newRecord, { headers: headers });
+    };
+    // addRecord(        blood_pressure, heart_rate,respiratory_rate,        blood_oxygen) {
+    //     const obj = {
+    //                 blood_pressure :         blood_pressure,
+    //         heart_rate: heart_rate,
+    //         respiratory_rate:respiratory_rate,
+    //                 blood_oxygen:        blood_oxygen
+    // //     };
+    //     this.http.post(`${this.uri}/add`, obj)
+    //     .subscribe(res => console.log('Done'));
+    // }
+    RecordService.prototype.getRecords = function (id) {
+        return this
+            .http
+            .get(this.uri + "/" + id);
+    };
+    RecordService.prototype.deleteRecord = function (id) {
+        return this
+            .http
+            .get(this.uri + "/delete/" + id);
+    };
+    RecordService.prototype.saveID = function (id) {
+        localStorage.removeItem("id");
+        localStorage.setItem("id", JSON.stringify(id));
+    };
+    RecordService.prototype.setData = function (data) {
+        this.apiData.next(data);
+    };
+    RecordService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], RecordService);
+    return RecordService;
 }());
 
 
@@ -1032,7 +1222,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/tirthraj/OneDrive - Centennial College/MAPD-Web Tech/Patient-Clinical-Data-Management/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/tirthraj/Downloads/Patient-Clinical-Data-Management/src/main.ts */"./src/main.ts");
 
 
 /***/ })

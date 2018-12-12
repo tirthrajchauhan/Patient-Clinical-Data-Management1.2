@@ -5,43 +5,27 @@
   <div class="card-body">
       <form [formGroup]="angForm" novalidate>
           <div class="form-group">
-        <label class="col-md-4">Blood Pressure</label>
-        <input type="text" class="form-control" name="blood_pressure" formControlName="blood_pressure" #first_name/>
+        <label class="col-md-4">{{'H13' | translate}}</label>
+        <input type="text" class="form-control" name="blood_pressure" formControlName="blood_pressure" [(ngModel)]="blood_pressure"/>
       </div>
-      <div *ngIf="angForm.controls['blood_pressure'].invalid && (angForm.controls['blood_pressure'].dirty || angForm.controls['blood_pressure'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['blood_pressure'].errors.required">
-          Please insert blood pressure.
-        </div>
-      </div>
+      
       <div class="form-group">
-        <label class="col-md-4">Respiratory Rate</label>
-        <input type="text" class="form-control" name="respi_rate" formControlName="respi_rate" #last_name/>
+        <label class="col-md-4">{{'H14' | translate}}</label>
+        <input type="text" class="form-control" name="respiratory_rate" formControlName="respiratory_rate" [(ngModel)]="respiratory_rate"/>
       </div>
-      <div *ngIf="angForm.controls['respi_rate'].invalid && (angForm.controls['respi_rate'].dirty || angForm.controls['respi_rate'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['respi_rate'].errors.required">
-          Please insert respiratory rate.
-          </div>
-        </div>
+     
       <div class="form-group">
-        <label class="col-md-4">Blood Oxygen Level</label>
-        <input type="text" class="form-control" name="bo_level" formControlName="bo_level" #dob/>
+        <label class="col-md-4">{{'H15' | translate}}</label>
+        <input type="text" class="form-control" name="blood_oxygen" formControlName="blood_oxygen" [(ngModel)]="blood_oxygen"/>
       </div>
-      <div *ngIf="angForm.controls['bo_level'].invalid && (angForm.controls['bo_level'].dirty || angForm.controls['bo_level'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['bo_level'].errors.required">
-            Please insert blood oxygen level.
-          </div>
-        </div>
+      
       <div class="form-group">
-        <label class="col-md-4">Heart-Beat Rate</label>
-        <input type="text" class="form-control" name="hb_rate" formControlName="hb_rate" #address/>
+        <label class="col-md-4">{{'H16' | translate}}</label>
+        <input type="text" class="form-control" name="heart_rate" formControlName="heart_rate" [(ngModel)]="heart_rate"/>
       </div>
-      <div *ngIf="angForm.controls['hb_rate'].invalid && (angForm.controls['hb_rate'].dirty || angForm.controls['hb_rate'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['hb_rate'].errors.required">
-            Please insert heart-beat rate.
-          </div>
-        </div>
+     
         <div class="form-group">
-            <button (click)="angForm.invalid" class="btn btn-primary">Add Patient</button>
+            <button type="submit" (click)="onRecordSubmit()" [disabled]="angForm.invalid" class="btn btn-primary">Add Records</button>
           </div>
     </form>
   </div>

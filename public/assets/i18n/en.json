@@ -1,0 +1,25 @@
+{
+    "Title": "Welcome To Health Care Provider Application",
+    "H1": "List Patients",
+    "H2": "Add Patients",
+    "H3": "Add New Patient!",
+    "H4": "First Name",
+    "H5": "Last Name",
+    "H6": "Date of birth",
+    "H7": "Address",
+    "H8": "Actions",
+    "H9": "Edit",
+    "H10": "Delete",
+    "H11": "Patient Record",
+    "H13": "Blood Pressure",
+    "H14": "Respiratory Rate",
+    "H15": "Blood Oxygen Level",
+    "H16": "Heart Beat Rate",
+    "H17": "Update",
+    "H18": "Patient Details",
+    "H19": "Login",
+    "H20": "Username",
+    "H21": "Password",
+    "H22": "Logout"
+
+}

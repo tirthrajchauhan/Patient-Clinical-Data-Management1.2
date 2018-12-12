@@ -9,7 +9,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { AddrecordComponent } from './components/addrecord/addrecord.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PatientService } from './patient.service';
 //import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -21,8 +21,13 @@ import { GetrecordComponent } from './components/getrecord/getrecord.component';
 import { EditrecordComponent } from './components/editrecord/editrecord.component';
 
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 const routes: Routes = [
   {
     path: 'create',
@@ -73,6 +78,17 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+
+
+    HttpClientModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        }),
+
     RouterModule.forRoot(routes),
     SlimLoadingBarModule,
     HttpClientModule,
@@ -84,4 +100,3 @@ const routes: Routes = [
 
 })
 export class AppModule { }
-

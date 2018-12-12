@@ -5,7 +5,7 @@
     <div class="card-body">
         <form [formGroup]="angForm" novalidate>
             <div class="form-group">
-          <label class="col-md-4">Blood Pressure</label>
+          <label class="col-md-4">{{'H13' | translate}}</label>
           <input type="text" class="form-control" name="blood_pressure" formControlName="blood_pressure" #first_name [(ngModel)] = "patient.blood_pressure" />
         </div>
         <div *ngIf="angForm.controls['blood_pressure'].invalid && (angForm.controls['blood_pressure'].dirty || angForm.controls['blood_pressure'].touched)" class="alert alert-danger">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-4">Respiratory Rate</label>
+          <label class="col-md-4">{{'H14' | translate}}</label>
           <input type="text" class="form-control" name="respi_rate" formControlName="respi_rate" #last_name [(ngModel)] = "patient.respi_rate"/>
         </div>
         <div *ngIf="angForm.controls['respi_rate'].invalid && (angForm.controls['respi_rate'].dirty || angForm.controls['respi_rate'].touched)" class="alert alert-danger">
@@ -24,7 +24,7 @@
             </div>
           </div>
         <div class="form-group">
-          <label class="col-md-4">Blood Oxygen Level</label>
+          <label class="col-md-4">{{'H15' | translate}}</label>
           <input type="text" class="form-control" name="bo_level" formControlName="bo_level" #bo_level [(ngModel)] = "patient.bo_level"/>
         </div>
         <div *ngIf="angForm.controls['bo_level'].invalid && (angForm.controls['bo_level'].dirty || angForm.controls['bo_level'].touched)" class="alert alert-danger">
@@ -33,7 +33,7 @@
             </div>
           </div>
         <div class="form-group">
-          <label class="col-md-4">Heart-Beat Rate</label>
+          <label class="col-md-4">{{'H16' | translate}}</label>
           <input type="text" class="form-control" name="hb_rate" formControlName="hb_rate" #address [(ngModel)] = "patient.hb_rate"/>
         </div>
         <div *ngIf="angForm.controls['hb_rate'].invalid && (angForm.controls['hb_rate'].dirty || angForm.controls['hb_rate'].touched)" class="alert alert-danger">
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="form-group">
-              <button [disabled]="angForm.invalid" class="btn btn-primary">Update Record</button>
+              <button [disabled]="angForm.invalid" class="btn btn-primary">{{'H17' | translate}}</button>
             </div>
 
       </form>

@@ -14,6 +14,7 @@ import { FormGroup,FormBuilder } from '@angular/forms';
 export class IndexComponent implements OnInit {
 
   patients: Patient[];
+  patient:Patient;
   id: string;
   addPatient:FormGroup; 
   constructor(private patientService: PatientService, private router: Router,public authService: AuthService,    private fb: FormBuilder) { }
@@ -51,6 +52,14 @@ deletePatient(id) {
   });
   window.location.reload();
 }
-
+singlePatient(id){
+  this.patientService.getSinglePatient(id).subscribe((res:any)=>{
+    console.log(res);
+    this.patients=res;
+    this.patientService.setData(res);
+    this.router.navigate(['/getrecord']);
+    
+  })
+}
 
 }

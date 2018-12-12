@@ -5,7 +5,7 @@
     <div class="card-body">
         <form [formGroup]="angForm" novalidate>
             <div class="form-group">
-          <label class="col-md-4">First Name</label>
+          <label class="col-md-4">{{'H4' | translate}}</label>
           <input type="text" class="form-control" name="first_name" formControlName="first_name" #first_name [(ngModel)] = "patient.first_name" />
         </div>
         <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="alert alert-danger">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-4">Last Name</label>
+          <label class="col-md-4">{{'H5' | translate}}</label>
           <input type="text" class="form-control" name="last_name" formControlName="last_name" #last_name [(ngModel)] = "patient.last_name"/>
         </div>
         <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="alert alert-danger">
@@ -24,7 +24,7 @@
             </div>
           </div>
         <div class="form-group">
-          <label class="col-md-4">Date Of Birth</label>
+          <label class="col-md-4">{{'H6' | translate}}</label>
           <input type="text" class="form-control" name="dob" formControlName="dob" #dob [(ngModel)] = "patient.dob"/>
         </div>
         <div *ngIf="angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)" class="alert alert-danger">
@@ -33,7 +33,7 @@
             </div>
           </div>
         <div class="form-group">
-          <label class="col-md-4">Address</label>
+          <label class="col-md-4">{{'H7' | translate}}</label>
           <input type="text" class="form-control" name="address" formControlName="address" #address [(ngModel)] = "patient.address"/>
         </div>
         <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="form-group">
-              <button (click)="updatePatient(first_name.value, last_name.value,dob.value,address.value)" [disabled]="angForm.invalid" class="btn btn-primary">Update Patient</button>
+              <button (click)="updatePatient(first_name.value, last_name.value,dob.value,address.value)" [disabled]="angForm.invalid" class="btn btn-primary">{{'H17' | translate}}</button>
             </div>
 
       </form>

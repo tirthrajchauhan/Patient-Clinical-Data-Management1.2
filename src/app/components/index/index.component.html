@@ -1,9 +1,9 @@
 <div class="loginBox">
         Welcome,  {{id}}
-        <a href="javascript:void(0);" (click)="logout()">Logout</a>
+        <a href="javascript:void(0);" (click)="logout()">  {{'H22' | translate}}</a>
     </div>
 <p>
-    Patient Details
+    {{'H18' | translate}}
 </p>
 <div class="card">
         <div class="card-body">
@@ -11,22 +11,23 @@
                 <table class="table table-hover">
                             <thead>
                                     <tr>
-                                        <td>First Name</td>
-                                        <td class="hide">Last Name</td>
-                                        <td class="hide">DOB</td>
-                                        <td class="hide">Address</td>
-                                        <td colspan="2">Actions</td>
+                                        <td>{{'H4' | translate}}</td>
+                                        <td class="hide">{{'H5' | translate}}</td>
+                                        <td class="hide">{{'H6' | translate}}</td>
+                                        <td class="hide">{{'H7' | translate}}</td>
+                                        <td colspan="2">{{'H8' | translate}}</td>
                                     </tr>
                             </thead>
                             <tbody id="body_color">
                                     <tr *ngFor="let patient of patients">
-                                        <td class="CellWithComment"><a [routerLink]="['/getrecord']" class="nav-link">{{ patient.first_name }}<span class="CellComment">Click to fetch records!</span></a>
-                                        </td>
+                                        <!-- <td class="CellWithComment"><a [routerLink]="['/getrecord', patient._id]" class="nav-link">{{ patient.first_name }}<span class="CellComment">Click to fetch records!</span></a>
+                                        </td> -->
                                         <td class="hide">{{ patient.last_name }}</td>
                                         <td class="hide">{{ patient.dob }}</td>
                                         <td class="hide">{{ patient.address }}</td>
-                                        <td class="buttons"><a [routerLink]="['/edit', patient._id]" class="btn btn-primary">Edit</a>
-                                        <button (click)="deletePatient(patient._id)"  class="btn btn-danger">Delete</button></td>
+                                        <td class="buttons"><a (click)="singlePatient(patient._id)" class="btn btn-primary">Records</a>
+                                        <a [routerLink]="['/edit', patient._id]" class="btn btn-primary">{{'H9' | translate}}</a>
+                                        <button (click)="deletePatient(patient._id)"  class="btn btn-danger">{{'H10' | translate}}</button></td>
                                     </tr>
                             </tbody>
                 </table> 

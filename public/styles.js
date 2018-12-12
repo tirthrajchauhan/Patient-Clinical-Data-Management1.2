@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/tirthraj/OneDrive - Centennial College/MAPD-Web Tech/Patient-Clinical-Data-Management/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/tirthraj/Downloads/Patient-Clinical-Data-Management/src/styles.css */"./src/styles.css");
 
 
 /***/ })

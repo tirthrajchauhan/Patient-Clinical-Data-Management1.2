@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Patient } from './components/index/Patient';
 
 
@@ -11,6 +12,9 @@ export class PatientService {
 
  
   constructor(private http: HttpClient) { }
+
+  private apiData = new BehaviorSubject<Patient>(null);
+  public apiData$ = this.apiData.asObservable();
 
   addPatient(first_name, last_name,dob,address) {
     const obj = {
@@ -30,8 +34,14 @@ export class PatientService {
            
     }
 
+getSinglePatient(id){
+  return this.http.get(`${this.uri}/${id}`);
+}
 
 
+setData(data){
+  this.apiData.next(data);
+}
 
 
     editPatient(id) {
@@ -61,5 +71,4 @@ deletePatient(id) {
             .http
             .get(`${this.uri}/delete/${id}`);
 }
-
 }
